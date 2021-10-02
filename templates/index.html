@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Search Page</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock%}
+
+{% block body %}
+<!-- <div class="content"> -->
+<div class="block"></div>
+   <div class="header" style="color:#FDFEFE ">Boston House Price Prediction</div>
+	<!-- <h2 style="text-align: center">Boston House Price Prediction</h2> -->
+	<div class="content">
+	<div class="form">
+		<form action="/predict" method="POST">
+			<h3>Enter per capita crime rate by town(varies between 0-100)</h3><input type="number" style="text-align: center" name="CRIME_RATE" id="CRIME_RATE" step="0.01" min="0.00" max="100" placeholder="RATE">
+
+			<h3>Charles River ( = 1 if tract bounds river; 0 otherwise)</h3><select name="CHAS" id="CHAS">
+				<option value="1">1</option>
+				<option value="0">0</option>
+			</select>
+
+			<h3>Enter average number of rooms per dwelling(varies between 0-20)</h3><input type="number" style="text-align: center" name="RM" id="RM" step="0.01" min="0.00" max="20.00" placeholder="RM">
+
+			<h3>Enter weighted distances to five Boston employment centers(varies between 0-20)</h3><input type="number" style="text-align: center" name="DIS" id="DIS" step="0.01" min="0.00" max="20.00" placeholder="DISTANCES">
+
+			<h3>Enter accessibility index to radial highways(varies between 0-30)</h3><input type="number" style="text-align: center" name="RAD" id="RAD" step="0.01" min="0.00" max="30.00" placeholder="RAD">
+
+			<h3>Enter Full-value property tax rate per 10,000 us Dollars(varies between 0-1000)</h3><input type="number" style="text-align: center" name="TAX" id="TAX" step="0.01" min="0.00" max="1000.00" placeholder="TAX">
+
+			<h3>Enter pupil-teacher ratio by town(varies between 0-30)</h3><input type="number" style="text-align: center" name="PTRATIO" id="PTRATIO" step="0.01" min="0.00" max="30.00" placeholder="PTRATIO">
+
+			<h3>Enter proportion of people of African American descent by town(varies between 0-500)</h3><input type="number" style="text-align: center" name="B" id="B" step="0.01" min="0.00" max="500.00" placeholder="B">
+
+			<h3>Enter percentage of lower status of the population(varies between 0-50)</h3><input type="number" style="text-align: center" name="LSTAT" id="LSTAT" step="0.01" min="0.00" max="50.00" placeholder="LSTAT">
+
+			<h3>Check house price</h3><input type="submit" style="text-align: center" value="Predict">
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+<!-- crim	zn	indus	chas	nox	rm	age	dis	rad	tax	ptratio	b	lstat	medv -->
+<!-- 0.00632	18.0	2.31	0	0.538	6.575	65.2	4.0900	1	296	15.3	396.90	4.98	24.0 -->
